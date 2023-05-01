@@ -5,7 +5,7 @@ In this repository I will record the relevant information regarding the wind cli
 The Deutsche Wetterdienst (DWD) provides information on many weather parameters. Relevant for us is only the wind information.
 [https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate)
 
-`data_extracting.ipynb`
+`/Code/00data_extracting.ipynb`
 
 ## 2. Resolution of the wind data provided
 ### Mean wind speed
@@ -22,13 +22,15 @@ The Deutsche Wetterdienst (DWD) provides information on many weather parameters.
   - Automatic wind information since: 07-1997
 
 - **Munich airport**
-  - Location: 48.3477ᵒN 11.8134ᵒE (east part of the airport, near to the threshold of runway 26L )
+  - Location: 48.3477ᵒN 11.8134ᵒE (east part of the airport, near to the threshold of runway 26L)
   - Height: 10 m
   - Automatic wind information since: 05-1992
 
 ## 4. Post-processing of raw data
-`postprocessing.py`
+`/Code/01postprocessing.py`
 
 
 ## 5. Plotting
-`plotting.ipynb`
+`/Code/02plotting.ipynb`
+
+**Note**: The .html graphs have to be downloaded in order to be visualized correctly.
