@@ -103,49 +103,6 @@ df_dir2_c = pd.melt(df_dir2_c.reset_index(), id_vars=['index'], var_name='SpeedR
 df_dir2_a.rename(columns={'index': 'Direction'}, inplace=True)
 df_dir2_c.rename(columns={'index': 'Direction'}, inplace=True)
 
-
-##########
-# PLOTTING
-##########
-
-plt.figure(figsize=(10.5,5))
-plt.title('Average winds in Munich city and airport')
-
-years = [np.arange(1997, 2023, 1),
-         np.arange(1992, 2023, 1)]
-yearly_winds1 = df_city.groupby(df_city.index.to_period('A')).mean()    # city
-yearly_winds2 = df_airp.groupby(df_airp.index.to_period('A')).mean()    # airport
-
-plt.subplot(121)
-# yearly_winds1['WindSpeed'].plot(kind='bar')
-plt.bar(years[0], yearly_winds1['WindSpeed'])
-plt.xlabel('Year')
-plt.ylabel('[m/s]')
-plt.title('Munich city')
-plt.ylim([0,4])
-
-plt.subplot(122)
-plt.bar(years[1], yearly_winds2['WindSpeed'])
-plt.xlabel('Year')
-plt.ylabel('[m/s]')
-plt.title('Munich airport')
-plt.ylim([0,4])
-
-plt.show()
-
-
-fig1 = px.bar(df_ranges_a, x=df_ranges_a.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich airport', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
-# fig1.show()
-fig1.write_html("monthwinds_airp.html")
-
-fig2 = px.bar(df_ranges_c, x=df_ranges_c.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich city', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
-# fig2.show()
-fig2.write_html("monthwinds_city.html")
-
-fig3 = px.bar_polar(df_dir_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
-# fig3.show()
-fig3.write_html("windrose_airp.html")
-
 fig4 = px.bar_polar(df_dir2_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
 # fig4.show()
 fig4.write_html("windrose_precise_airp.html")
