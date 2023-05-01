@@ -5,6 +5,7 @@ In this repository I will record the relevant information regarding the wind cli
 The Deutsche Wetterdienst (DWD) provides information on many weather parameters. Relevant for us is only the wind information.
 [https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate)
 
+`data_extracting.ipynb`
 
 ## 2. Resolution of the wind data provided
 ### Mean wind speed
@@ -30,4 +31,4 @@ The Deutsche Wetterdienst (DWD) provides information on many weather parameters.
 
 
 ## 5. Plotting
-`plotting.py`
+`plotting.ipynb`
