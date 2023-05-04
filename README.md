@@ -27,10 +27,12 @@ The Deutsche Wetterdienst (DWD) provides information on many weather parameters.
   - Automatic wind information since: 05-1992
 
 ## 4. Post-processing of raw data
-`/Code/01postprocessing.py`
 
 
 ## 5. Plotting
-`/Code/02plotting.ipynb`
+The following plots can be found in the `Relevant graphs` folder:
+- Average wind speeds per year.
+- Average wind speeds per month.
+- Wind roses (direction & wind intensity).
 
 **Note**: The .html graphs have to be downloaded in order to be visualized correctly.
