@@ -7,7 +7,7 @@ The Deutsche Wetterdienst (DWD) provides information on many weather parameters.
 
 Relevant for us is only the wind information (both mean and gust values).
 
-`/Code/00data_extracting.ipynb`
+\`Code`\`00_data_extracting.ipynb`
 
 ## 2. Resolution of the wind data provided
 All the data being currently recorded by the DWD follow the WMO guidelines, which help minimize the local effects. 
@@ -44,7 +44,7 @@ The following information is provided in 10-minute time windows:
   - Automatic wind information since: 05-1992
 
 ## 4. Post-processing of raw data
-`Code`/`01_postprocessing.py`
+\`Code`\`01_postprocessing.py`
 
 ## 5. Plotting
 The following plots can be found in the `Relevant graphs` folder:
