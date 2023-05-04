@@ -2,17 +2,34 @@
 In this repository I will record the relevant information regarding the wind climate conditions in Munich. The aim is to provide data supporting wind simulations for the TU Munich inner city campus.
 
 ## 1. Data extraction from the DWD Database
-The Deutsche Wetterdienst (DWD) provides information on many weather parameters. Relevant for us is only the wind information.
+The Deutsche Wetterdienst (DWD) provides information on many weather parameters. 
 [https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate)
+
+Relevant for us is only the wind information (both mean and gust values).
 
 `/Code/00data_extracting.ipynb`
 
 ## 2. Resolution of the wind data provided
+All the data being currently recorded by the DWD follow the WMO guidelines, which help minimize the local effects. 
+
+The records are accompanied by comprehensive station metadata.
 ### Mean wind speed
 ![Resolution of DWD data](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/QualityofDWDdata.png)
 
-### Gust speed ("extreme winds")
+- **10-minute log**
+  - Mean wind speed and direction of the last 10 minutes. 
+  - Quality:
+  
+- **Hourly log**
+  - Average of the six 10-minute intervals measured during the previous hour
+  - Quality: 
 
+
+### Gust speed ("extreme winds")
+The following information is provided in 10-minute time windows:
+- Maximum (peak) wind speed and direction.
+- Minimum wind speed.
+- Maximum 10-minute average during the previous 10-minutes.
 
 ## 3. Detailed information about the weather stations
 
