@@ -52,29 +52,55 @@ The following information is provided in 10-minute time windows:
 /`Code`/`01_postprocessing.py`
 
 ### How data are presented
-Mean winds
+Mean winds:
 | Station's ID  | Date | Quality level | Mean speed | Direction | eor (End of report) | 
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 1262  | 2021091003 | 10 | 2.1  | 190 | eor |
 | 1262  | 2021091004 | 10 | 1.0  | 200 | eor |
 | 1262  | 2021091005 | 10 | 0.8  | 320 | eor |
 
-Gust winds
+Gust winds:
 | Station's ID  | Date | Quality level | Maximum speed | Minimum speed | Maximum 10-min average | Direction of max. speed | eor (End of report) | 
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 1262  | 202102150350 | 3 | 4.4 | 2.3 | 3.4 | 250 | eor |
+| 1262  | 202102150350 | 3 | 4.4 | -999 | -999 | -999 | eor |
 | 1262  | 202102150400 | 3 | 4.1 | 3.1 | 3.6 | 250 | eor |
 | 1262  | 202102150410 | 3 | 4.1 | 2.6 | 3.5 | 250 | eor |
 
-\* 
-
 ### Post-processing actions
 
+Following post-processing actions have been carried out in order to filter the raw data obtained.
+1) Conversion of the dates to *datetime* format.
+2) Renaming the column names to more descriptive names.
+3) Setting the "Date" column as index.
+4) Deleting the "eor" column.
+5) Ignoring meaningless values (negative wind speed).
+6) Storing not available data (-999.0) as NaN (NotANumber) values.
+7) Ignoring values previous to July 1997 for the city station (since they were not automatically recorded).
+
+### End databases
+
+Mean winds:
+| Date | Station | QualityLevel | WindSpeed | WindDirection |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| 2021-09-10 03:00:00 | 1262 | 10 | 2.1 | 190 |
+| 2021-09-10 04:00:00 | 1262 | 10 | 1.0 | 200 |
+| 2021-09-10 05:00:00 | 1262 | 10 | 0.8 | 320 |
+
+Gust winds:
+| Date | Station | QualityLevel | MaxSpeed | MinSpeed | MaxMean | MaxDir |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 2021-02-15 03:50:00 | 1262 | 3 | 4.4 | NaN | NaN | NaN |
+| 2021-02-15 04:00:00 | 1262 | 3 | 4.1 | 3.1 | 3.6 | 250 |
+| 2021-02-15 04:10:00 | 1262 | 3 | 4.1 | 2.6 | 3.5 | 250 |
+
+\* Note that, for the purposes of the graphs, one gust value will be taken **every ten minutes**.
 
 ## 5. Plotting
 The following plots can be found in the `Relevant graphs` folder:
-- Average wind speeds per year.
-- Average wind speeds per month.
-- Wind roses (direction & wind intensity).
+- Average wind speeds per year. []
+- Average wind speeds per month. []
+- Wind roses (direction & wind intensity). []
+- Comparison of gust vs. mean wind intensity. []
+- Histogram of the wind intensity distribution. []
 
 **Note**: The .html graphs have to be downloaded in order to be visualized correctly.
