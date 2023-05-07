@@ -59,21 +59,6 @@ df_city = df_city[df_city.index > date_lim]
 ### 1.- MEAN
 
 # Wind speed ranges
-"""""
-df1a = df_airp[df_airp.WindSpeed < 1]
-df2a = df_airp[(df_airp.WindSpeed > 1) & (df_airp.WindSpeed < 3)]
-df3a = df_airp[(df_airp.WindSpeed > 3) & (df_airp.WindSpeed < 6)]
-df4a = df_airp[(df_airp.WindSpeed > 6) & (df_airp.WindSpeed < 10)]
-df5a = df_airp[df_airp.WindSpeed > 10]
-dataframes_a = [df1a, df2a, df3a, df4a, df5a]
-
-df1c = df_city[df_city.WindSpeed < 1]
-df2c = df_city[(df_city.WindSpeed > 1) & (df_city.WindSpeed < 3)]
-df3c = df_city[(df_city.WindSpeed > 3) & (df_city.WindSpeed < 6)]
-df4c = df_city[(df_city.WindSpeed > 6) & (df_city.WindSpeed < 10)]
-df5c = df_city[df_city.WindSpeed > 10]
-dataframes_c = [df1c, df2c, df3c, df4c, df5c]
-"""
 ranges = [1, 3, 6, 10]      # Slices into which the wind intensity is to be divided into
 dataframes_a = []           # Stores the different subsets of data based on the wind intensity. dataframes_a[0] will only have the entries where the wind was at lowest intensity
 dataframes_c = []
@@ -193,47 +178,47 @@ fig3 = px.bar_polar(df_dir_a, r="Frequency", theta="Direction", color="SpeedRang
 fig3.write_html("Relevant graphs/03_WindRose_airp.html")
 
 # WINDROSE (city)
-fig5 = px.bar_polar(df_dir_c, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich city', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
-fig5.write_html("Relevant graphs/04_WindRose_city.html")
+fig4 = px.bar_polar(df_dir_c, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich city', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
+fig4.write_html("Relevant graphs/04_WindRose_city.html")
 
 # PRECISE WINDROSE (airport)
-fig4 = px.bar_polar(df_dir2_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
-fig4.write_html("Relevant graphs/05_WindRose_precise_airp.html")
+fig5 = px.bar_polar(df_dir2_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
+fig5.write_html("Relevant graphs/05_WindRose_precise_airp.html")
 
 # PRECISE WINDROSE (city)
 fig6 = px.bar_polar(df_dir2_c, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich city', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig6.write_html("Relevant graphs/06_WindRose_precise_city.html")
 
 # GUST vs MEAN (airport)
-fig8 = px.line(df_comp_a, x=df_comp_a.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich airport')
-fig8.update_yaxes(range=[0,6])
-fig8.write_html("Relevant graphs/07_GustvsMean_a.html")
+fig7 = px.line(df_comp_a, x=df_comp_a.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich airport')
+fig7.update_yaxes(range=[0,6])
+fig7.write_html("Relevant graphs/07_GustvsMean_a.html")
 
 # GUST vs MEAN (city)
-fig7 = px.line(df_comp_c, x=df_comp_c.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich city')
-fig7.update_yaxes(range=[0,6])
-fig7.write_html("Relevant graphs/08_GustvsMean_c.html")
+fig8 = px.line(df_comp_c, x=df_comp_c.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich city')
+fig8.update_yaxes(range=[0,6])
+fig8.write_html("Relevant graphs/08_GustvsMean_c.html")
 
 # WIND SPEED DISTRIBUTION (airport)
-fig10 = px.histogram(df_airp, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich airport')
-fig10.update_layout(bargap = 0.05)
-fig10.update_xaxes(range=[0,20])
-fig10.write_html('Relevant graphs/09_Histogram_a.html')
-
-# WIND SPEED DISTRIBUTION (city)
-fig9 = px.histogram(df_city, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich city')
+fig9 = px.histogram(df_airp, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich airport')
 fig9.update_layout(bargap = 0.05)
 fig9.update_xaxes(range=[0,20])
-fig9.write_html('Relevant graphs/10_Histogram_c.html')
+fig9.write_html('Relevant graphs/09_Histogram_a.html')
+
+# WIND SPEED DISTRIBUTION (city)
+fig10 = px.histogram(df_city, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich city')
+fig10.update_layout(bargap = 0.05)
+fig10.update_xaxes(range=[0,20])
+fig10.write_html('Relevant graphs/10_Histogram_c.html')
 
 # WIND GUST DISTRIBUTION (airport)
-fig12 = px.histogram(df_gairp, x='MaxSpeed', nbins=200, title='Gust intenstiy distribution in Munich airport')
-fig12.update_layout(bargap = 0.05)
-fig12.update_xaxes(range=[0,20])
-fig12.write_html('Relevant graphs/11_Histogram_gust_a.html')
-
-# WIND GUST DISTRIBUTION (city)
-fig11 = px.histogram(df_gcity, x='MaxSpeed', nbins=200, title='Gust intensity distribution in Munich city')
+fig11 = px.histogram(df_gairp, x='MaxSpeed', nbins=200, title='Gust intenstiy distribution in Munich airport')
 fig11.update_layout(bargap = 0.05)
 fig11.update_xaxes(range=[0,20])
-fig11.write_html('Relevant graphs/12_Histogram_gust_c.html')
+fig11.write_html('Relevant graphs/11_Histogram_gust_a.html')
+
+# WIND GUST DISTRIBUTION (city)
+fig12 = px.histogram(df_gcity, x='MaxSpeed', nbins=200, title='Gust intensity distribution in Munich city')
+fig12.update_layout(bargap = 0.05)
+fig12.update_xaxes(range=[0,20])
+fig12.write_html('Relevant graphs/12_Histogram_gust_c.html')
