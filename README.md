@@ -1,5 +1,7 @@
 # TU Munich microclimate
-In this repository I will record the relevant information regarding the wind climate conditions in Munich. The aim is to provide data supporting wind simulations for the TU Munich inner city campus.
+In this repository I will record the relevant information regarding the wind climate conditions in Munich. 
+
+The aim is to provide data supporting wind simulations for the TU Munich inner city campus.
 
 ## 1. Data extraction from the DWD Database
 The Deutsche Wetterdienst (DWD) provides information on many weather parameters. 
