@@ -46,6 +46,26 @@ The following information is provided in 10-minute time windows:
 ## 4. Post-processing of raw data
 /`Code`/`01_postprocessing.py`
 
+### How data are presented
+Mean winds
+| Station's ID  | Date | Quality level | Mean speed | Direction | eor (End of report) | 
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 1262  | 2021091003 | 10 | 2.1  | 190 | eor |
+| 1262  | 2021091004 | 10 | 1.0  | 200 | eor |
+| 1262  | 2021091005 | 10 | 0.8  | 320 | eor |
+
+Gust winds
+| Station's ID  | Date | Quality level | Maximum speed | Minimum speed | Maximum 10-min average | Direction of max. speed | eor (End of report) | 
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 1262  | 202102150350 | 3 | 4.4 | 2.3 | 3.4 | 250 | eor |
+| 1262  | 202102150400 | 3 | 4.1 | 3.1 | 3.6 | 250 | eor |
+| 1262  | 202102150410 | 3 | 4.1 | 2.6 | 3.5 | 250 | eor |
+
+\* 
+
+### Post-processing actions
+
+
 ## 5. Plotting
 The following plots can be found in the `Relevant graphs` folder:
 - Average wind speeds per year.
