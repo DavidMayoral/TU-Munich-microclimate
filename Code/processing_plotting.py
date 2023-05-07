@@ -59,21 +59,6 @@ df_city = df_city[df_city.index > date_lim]
 ### 1.- MEAN
 
 # Wind speed ranges
-"""""
-df1a = df_airp[df_airp.WindSpeed < 1]
-df2a = df_airp[(df_airp.WindSpeed > 1) & (df_airp.WindSpeed < 3)]
-df3a = df_airp[(df_airp.WindSpeed > 3) & (df_airp.WindSpeed < 6)]
-df4a = df_airp[(df_airp.WindSpeed > 6) & (df_airp.WindSpeed < 10)]
-df5a = df_airp[df_airp.WindSpeed > 10]
-dataframes_a = [df1a, df2a, df3a, df4a, df5a]
-
-df1c = df_city[df_city.WindSpeed < 1]
-df2c = df_city[(df_city.WindSpeed > 1) & (df_city.WindSpeed < 3)]
-df3c = df_city[(df_city.WindSpeed > 3) & (df_city.WindSpeed < 6)]
-df4c = df_city[(df_city.WindSpeed > 6) & (df_city.WindSpeed < 10)]
-df5c = df_city[df_city.WindSpeed > 10]
-dataframes_c = [df1c, df2c, df3c, df4c, df5c]
-"""
 ranges = [1, 3, 6, 10]      # Slices into which the wind intensity is to be divided into
 dataframes_a = []           # Stores the different subsets of data based on the wind intensity. dataframes_a[0] will only have the entries where the wind was at lowest intensity
 dataframes_c = []
