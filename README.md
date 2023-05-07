@@ -13,6 +13,11 @@ Relevant for us is only the wind information (both mean and gust values).
 All the data being currently recorded by the DWD follow the WMO guidelines, which help minimize the local effects. 
 
 The records are accompanied by comprehensive station metadata.
+
+Precision of the data:
+- Wind speed: ± 0.1 m/s
+- Wind direction: ± 10ᵒ 
+
 ### Mean wind speed
 ![Resolution of DWD data](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/QualityofDWDdata.png)
 
