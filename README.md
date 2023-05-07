@@ -17,19 +17,19 @@ All the data being currently recorded by the DWD follow the WMO guidelines, whic
 The records are accompanied by comprehensive station metadata.
 
 Precision of the data:
-- Wind speed: ± 0.1 m/s
-- Wind direction: ± 10ᵒ 
+- Wind speed: ±0.1 m/s
+- Wind direction: ±10ᵒ 
 
 ### Mean wind speed
 ![Resolution of DWD data](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/QualityofDWDdata.png)
 
 - **10-minute log**
   - Mean wind speed and direction of the last 10 minutes. 
-  - Quality:
+  - Quality: "Automatic control and correction".
   
 - **Hourly log**
   - Average of the six 10-minute intervals measured during the previous hour
-  - Quality: 
+  - Quality: "Quality control finished, all corrections finished" (best quality check level)
 
 
 ### Gust speed ("extreme winds")
@@ -37,6 +37,8 @@ The following information is provided in 10-minute time windows:
 - Maximum (peak) wind speed and direction.
 - Minimum wind speed.
 - Maximum 10-minute average during the previous 10-minutes.
+
+Quality: "Automatic control and correction".
 
 ## 3. Detailed information about the weather stations
 
