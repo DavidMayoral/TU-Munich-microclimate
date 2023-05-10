@@ -99,10 +99,10 @@ Gust winds:
 
 ## 5. Plotting
 The following plots can be found in the `Relevant graphs` folder:
-- Average wind speeds per year. []
-- Average wind speeds per month. []
-- Wind roses (direction & wind intensity). []
-- Comparison of gust vs. mean wind intensity. []
-- Histogram of the wind intensity distribution. []
+- Average wind speeds per month. [01,02]
+- Wind roses (direction & wind intensity) with different precisions. [03,04,05,06]
+- Comparison of gust vs. mean wind intensity. [07,08]
+- Histogram of the wind intensity distribution. [09,10,11,12]
+- Average wind speeds per year. [99]
 
 **Note**: The .html graphs have to be downloaded in order to be visualized correctly.
