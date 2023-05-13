@@ -4,16 +4,16 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-file = ["produkt_ff_stunde_19850101_20221231_03379.txt",    # City mean
-        "produkt_ff_stunde_19920519_20221231_01262.txt",    # Airp mean
-        "produkt_zehn_min_fx_19970712_19991231_03379.txt",  # City gust
-        "produkt_zehn_min_fx_20000101_20091231_03379.txt",
-        "produkt_zehn_min_fx_20100101_20191231_03379.txt",
-        "produkt_zehn_min_fx_20200101_20221231_03379.txt",
-        "produkt_zehn_min_fx_19920520_19991231_01262.txt",  # Airp gust
-        "produkt_zehn_min_fx_20000101_20091231_01262.txt",
-        "produkt_zehn_min_fx_20100101_20191231_01262.txt",
-        "produkt_zehn_min_fx_20200101_20221231_01262.txt"]
+file = ["DataFiles/produkt_ff_stunde_19850101_20221231_03379.txt",    # City mean
+        "DataFiles/produkt_ff_stunde_19920519_20221231_01262.txt",    # Airp mean
+        "DataFiles/produkt_zehn_min_fx_19970712_19991231_03379.txt",  # City gust
+        "DataFiles/produkt_zehn_min_fx_20000101_20091231_03379.txt",
+        "DataFiles/produkt_zehn_min_fx_20100101_20191231_03379.txt",
+        "DataFiles/produkt_zehn_min_fx_20200101_20221231_03379.txt",
+        "DataFiles/produkt_zehn_min_fx_19920520_19991231_01262.txt",  # Airp gust
+        "DataFiles/produkt_zehn_min_fx_20000101_20091231_01262.txt",
+        "DataFiles/produkt_zehn_min_fx_20100101_20191231_01262.txt",
+        "DataFiles/produkt_zehn_min_fx_20200101_20221231_01262.txt"]
 
 df_airp = pd.read_csv(file[1], sep=";")     # Airport mean wind information
 df_city = pd.read_csv(file[0], sep=";")     # City mean wind information
@@ -139,7 +139,7 @@ df_comp_c['Gust'] = df_gcity.groupby(df_gcity.index.month).mean().MaxSpeed.to_li
 ##########
 # PLOTTING
 ##########
-'''
+
 # AVERAGE WINDS PER YEAR
 plt.figure(figsize=(10.5,5))
 plt.title('Average winds in Munich city and airport')
@@ -164,7 +164,7 @@ plt.title('Munich airport')
 plt.ylim([0,4])
 
 plt.show()
-'''
+
 # MONTHLY WINDS (airport)
 fig1 = px.bar(df_ranges_a, x=df_ranges_a.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich airport', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig1.write_html("Relevant graphs/01_MonthWinds_airp.html")
