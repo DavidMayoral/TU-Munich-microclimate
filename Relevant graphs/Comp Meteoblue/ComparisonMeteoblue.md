@@ -9,11 +9,11 @@ Meteoblue:
 ![Meteoblue MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_MonthWinds.svg)
 
 DWD:
-![]()
+![](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/MonthWinds_city.png)
 
 ## Wind rose
 Meteoblue:
 ![Meteoblue WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_WindRose.svg)
 
 DWD:
-![]()
+![](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/WindRose_precise_city.png)
