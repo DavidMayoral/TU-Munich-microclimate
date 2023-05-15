@@ -2,7 +2,7 @@
 
 In order to assess the reliability of the data from DWD, they have been contrasted with the information provided by [meteoblue.com](https://www.meteoblue.com/en/weather/historyclimate/climatemodelled/munich_germany_2867714). 
 
-In particular, the graphs of *wind speed per month* and *wind rose* have been created in a similar format that Meteolbue presents them. 
+In particular, the graphs of *wind speed per month* and *wind rose* have been created in a similar format that Meteobue presents them. 
 
 ## Wind speed per month
 Meteoblue:
