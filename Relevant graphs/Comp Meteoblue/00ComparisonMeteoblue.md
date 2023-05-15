@@ -1,4 +1,4 @@
-# Comparing the data results with that of the Meteoblue source
+# Comparing the data quality and accuracy
 
 In order to assess the reliability of the data from DWD, they have been contrasted with the information provided by [meteoblue.com](https://www.meteoblue.com/en/weather/historyclimate/climatemodelled/munich_germany_2867714). 
 
