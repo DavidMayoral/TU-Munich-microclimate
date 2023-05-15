@@ -6,14 +6,18 @@ In particular, the graphs of *wind speed per month* and *wind rose* have been cr
 
 ## Wind speed per month
 Meteoblue:
-![Meteoblue MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_MonthWinds.svg)
+
+![Meteoblue MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_WindRose.svg)
 
 DWD:
-![](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/MonthWinds_city.png)
+
+![](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/MonthWinds_city.svg)
 
 ## Wind rose
 Meteoblue:
-![Meteoblue WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_WindRose.svg)
+
+![Meteoblue WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_MonthWinds.svg)
 
 DWD:
-![](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/WindRose_precise_city.png)
+
+![](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/WindRose_precise_city.svg)
