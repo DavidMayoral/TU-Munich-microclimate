@@ -1,4 +1,4 @@
-# Graphs. Table of content.
+# Graphs. Table of contents.
 
 All graphs are included in three different formats each: **static** (.png and .svg) and **interactive** (.html):
 
