@@ -108,3 +108,9 @@ The following plots can be found in the `Relevant graphs` folder:
 - Average wind speeds per year. [99]
 
 **Note**: The .html graphs have to be downloaded in order to be visualized correctly.
+
+## 6. Comparison with data from other sources
+
+In /`Relevant graphs`/`Comp Meteoblue`, a comparison can be found between the graphs generated and equivalent plots from [MeteoBlue](https://www.meteoblue.com/en/weather/historyclimate/climatemodelled/munich_germany_2867714). 
+
+This serves to ensure the validity of the DWD data.
