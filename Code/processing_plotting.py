@@ -75,8 +75,8 @@ directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
 directions2 = np.arange(0, 360, 10).tolist()     # 10-degree steps
 
 # Wind speed ranges per month
-ranges_a = np.zeros((12,5))             # Stores how often in month (i+1) the wind has been blowing with intensity j
-ranges_c = np.zeros((12,5))
+ranges_a = np.zeros((12,len(ranges)+1))             # Stores how often in month (i+1) the wind has been blowing with intensity j
+ranges_c = np.zeros((12,len(ranges)+1))
 for i in range(12):
     for j, df in enumerate(dataframes_a):
         ranges_a[i,j] = len(df.loc[df.index.month == i+1].WindSpeed)
@@ -85,9 +85,20 @@ for i in range(12):
 df_ranges_a = pd.DataFrame(ranges_a, index=months, columns=["<1","1-3","3-6","6-10",">10"])
 df_ranges_c = pd.DataFrame(ranges_c, index=months, columns=["<1","1-3","3-6","6-10",">10"])
 
+for i,month in enumerate(months):       # Rescaling the frequency value to the number of days in each month
+    if i==0 or i==2 or i==4 or i==6 or i==7 or i==9 or i==11:
+        df_ranges_a.loc[month] = df_ranges_a.loc[month] / df_ranges_a.loc[month].sum() * 31
+        df_ranges_c.loc[month] = df_ranges_c.loc[month] / df_ranges_c.loc[month].sum() * 31
+    elif i==1:
+        df_ranges_a.loc[month] = df_ranges_a.loc[month] / df_ranges_a.loc[month].sum() * 28
+        df_ranges_c.loc[month] = df_ranges_c.loc[month] / df_ranges_c.loc[month].sum() * 28
+    else:
+        df_ranges_a.loc[month] = df_ranges_a.loc[month] / df_ranges_a.loc[month].sum() * 30
+        df_ranges_c.loc[month] = df_ranges_c.loc[month] / df_ranges_c.loc[month].sum() * 30
+
 # Wind ranges per direction (8 Himmelrichtungen)
-dir_a = np.zeros((8,5))                 # Stores how often the wind of intensity j has been blowing in direction 45*i degrees
-dir_c = np.zeros((8,5))
+dir_a = np.zeros((8,len(ranges)+1))                  # Stores how often the wind of intensity j has been blowing in direction 45*i degrees
+dir_c = np.zeros((8,len(ranges)+1))
 for j, df in enumerate(dataframes_a):
     dir_a[0,j] = len(df[(df.WindDirection > 360-22.5) | (df.WindDirection < 22.5)])
 for j, df in enumerate(dataframes_c):
@@ -106,8 +117,8 @@ df_dir_a.rename(columns={'index': 'Direction'}, inplace=True)
 df_dir_c.rename(columns={'index': 'Direction'}, inplace=True)
 
 # Wind ranges per direction (10-degree precision)
-dir2_a = np.zeros((36,5))
-dir2_c = np.zeros((36,5))
+dir2_a = np.zeros((36,len(ranges)+1))
+dir2_c = np.zeros((36,len(ranges)+1))
 for j,df in enumerate(dataframes_a):
     dir2_a[0,j] = len(df[(df.WindDirection > 360-5) | (df.WindDirection < 5)])
 for j,df in enumerate(dataframes_c):
@@ -139,7 +150,7 @@ df_comp_c['Gust'] = df_gcity.groupby(df_gcity.index.month).mean().MaxSpeed.to_li
 ##########
 # PLOTTING
 ##########
-
+'''
 # AVERAGE WINDS PER YEAR
 plt.figure(figsize=(10.5,5))
 plt.title('Average winds in Munich city and airport')
@@ -164,74 +175,85 @@ plt.title('Munich airport')
 plt.ylim([0,4])
 
 plt.show()
-
+'''
 # MONTHLY WINDS (airport)
 fig1 = px.bar(df_ranges_a, x=df_ranges_a.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich airport', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig1.write_html("Relevant graphs/01_MonthWinds_airp.html")
-# fig1.write_image("Relevant graphs/01_MonthWinds_airp.svg")
 fig1.write_image("Relevant graphs/01_MonthWinds_airp.png")
+fig1.write_image("Relevant graphs/01_MonthWinds_airp.svg")
 
 # MONTHLY WINDS (city)
 fig2 = px.bar(df_ranges_c, x=df_ranges_c.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich city', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig2.write_html("Relevant graphs/02_MonthWinds_city.html")
 fig2.write_image("Relevant graphs/02_MonthWinds_city.png")
+fig2.write_image("Relevant graphs/02_MonthWinds_city.svg")
 
 # WINDROSE (airport)
 fig3 = px.bar_polar(df_dir_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig3.write_html("Relevant graphs/03_WindRose_airp.html")
 fig3.write_image("Relevant graphs/03_WindRose_airp.png")
+fig3.write_image("Relevant graphs/03_WindRose_airp.svg")
 
 # WINDROSE (city)
 fig4 = px.bar_polar(df_dir_c, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich city', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig4.write_html("Relevant graphs/04_WindRose_city.html")
 fig4.write_image("Relevant graphs/04_WindRose_city.png")
+fig4.write_image("Relevant graphs/04_WindRose_city.svg")
 
 # PRECISE WINDROSE (airport)
 fig5 = px.bar_polar(df_dir2_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig5.write_html("Relevant graphs/05_WindRose_precise_airp.html")
 fig5.write_image("Relevant graphs/05_WindRose_precise_airp.png")
+fig5.write_image("Relevant graphs/05_WindRose_precise_airp.svg")
 
 # PRECISE WINDROSE (city)
 fig6 = px.bar_polar(df_dir2_c, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich city', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
 fig6.write_html("Relevant graphs/06_WindRose_precise_city.html")
 fig6.write_image("Relevant graphs/06_WindRose_precise_city.png")
+fig6.write_image("Relevant graphs/06_WindRose_precise_city.svg")
 
 # GUST vs MEAN (airport)
 fig7 = px.line(df_comp_a, x=df_comp_a.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich airport')
 fig7.update_yaxes(range=[0,6])
 fig7.write_html("Relevant graphs/07_GustvsMean_airp.html")
 fig7.write_image("Relevant graphs/07_GustvsMean_airp.png")
+fig7.write_image("Relevant graphs/07_GustvsMean_airp.svg")
 
 # GUST vs MEAN (city)
 fig8 = px.line(df_comp_c, x=df_comp_c.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich city')
 fig8.update_yaxes(range=[0,6])
 fig8.write_html("Relevant graphs/08_GustvsMean_city.html")
 fig8.write_image("Relevant graphs/08_GustvsMean_city.png")
+fig8.write_image("Relevant graphs/08_GustvsMean_city.svg")
 
 # WIND SPEED DISTRIBUTION (airport)
 fig9 = px.histogram(df_airp, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich airport')
 fig9.update_layout(bargap = 0.05)
 fig9.update_xaxes(range=[0,20])
-fig9.write_html('Relevant graphs/09_Histogram_airp.html')
+fig9.write_html("Relevant graphs/09_Histogram_airp.html")
 fig9.write_image("Relevant graphs/09_Histogram_airp.png")
+fig9.write_image("Relevant graphs/09_Histogram_airp.svg")
 
 # WIND SPEED DISTRIBUTION (city)
 fig10 = px.histogram(df_city, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich city')
 fig10.update_layout(bargap = 0.05)
 fig10.update_xaxes(range=[0,20])
-fig10.write_html('Relevant graphs/10_Histogram_city.html')
+fig10.write_html("Relevant graphs/10_Histogram_city.html")
 fig10.write_image("Relevant graphs/10_Histogram_city.png")
+fig10.write_image("Relevant graphs/10_Histogram_city.svg")
 
 # WIND GUST DISTRIBUTION (airport)
 fig11 = px.histogram(df_gairp, x='MaxSpeed', nbins=200, title='Gust intenstiy distribution in Munich airport')
 fig11.update_layout(bargap = 0.05)
 fig11.update_xaxes(range=[0,20])
-fig11.write_html('Relevant graphs/11_Histogram_gust_airp.html')
+fig11.write_html("Relevant graphs/11_Histogram_gust_airp.html")
 fig11.write_image("Relevant graphs/11_Histogram_gust_airp.png")
+fig11.write_image("Relevant graphs/11_Histogram_gust_airp.svg")
 
 # WIND GUST DISTRIBUTION (city)
 fig12 = px.histogram(df_gcity, x='MaxSpeed', nbins=200, title='Gust intensity distribution in Munich city')
 fig12.update_layout(bargap = 0.05)
 fig12.update_xaxes(range=[0,20])
-fig12.write_html('Relevant graphs/12_Histogram_gust_city.html')
+fig12.write_html("Relevant graphs/12_Histogram_gust_city.html")
 fig12.write_image("Relevant graphs/12_Histogram_gust_city.png")
+fig12.write_image("Relevant graphs/12_Histogram_gust_city.svg")
