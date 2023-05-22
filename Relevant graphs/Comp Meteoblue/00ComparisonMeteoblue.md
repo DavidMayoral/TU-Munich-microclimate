@@ -5,11 +5,11 @@ In order to assess the reliability of the data from DWD, they have been contrast
 In particular, the graphs of *wind speed per month* and *wind rose* have been arranged in a similar format that Meteobue presents them. 
 
 ## Wind speed per month
-Meteoblue:
+**Meteoblue**
 
 ![Meteoblue MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_MonthWinds.svg)
 
-DWD:
+**DWD**
 
 ![DWD MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/MonthWinds_city.svg)
 
@@ -18,11 +18,11 @@ While the figures created with both sources look very similar overall, a differe
 This could be due to the fact that the measurement locations might be different, as well as the corrections used to standarize the data.
 
 ## Wind rose
-Meteoblue:
+**Meteoblue**
 
 ![Meteoblue WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/Meteoblue_WindRose.svg)
 
-DWD:
+**DWD**
 
 ![DWD WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/Relevant%20graphs/Comp%20Meteoblue/WindRose_precise_city.svg)
 
