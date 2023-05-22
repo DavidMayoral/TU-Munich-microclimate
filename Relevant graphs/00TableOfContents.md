@@ -1,6 +1,6 @@
 # Graphs. Table of content.
 
-All graphs are included in three different formats each: **static** (.png and .svg) and **interactive** (.html).
+All graphs are included in three different formats each: **static** (.png and .svg) and **interactive** (.html):
 
 01) Average wind speeds per month (AIRPORT)
 02) Average wind speeds per month (CITY)
