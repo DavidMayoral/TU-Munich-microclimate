@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from scipy import stats
 from datetime import datetime
 import matplotlib.pyplot as plt
 import plotly.express as px
@@ -230,6 +231,11 @@ fig8.write_image("Relevant graphs/08_GustvsMean_city.svg")
 fig9 = px.histogram(df_airp, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich airport')
 fig9.update_layout(bargap = 0.05)
 fig9.update_xaxes(range=[0,20])
+shape, loc, scale = stats.weibull_min.fit(df_airp['WindSpeed'])     # Weibull distribution fit
+x_line = np.linspace(np.min(df_airp['WindSpeed']), np.max(df_airp['WindSpeed']), 100)
+y_line = stats.weibull_min.pdf(x_line, shape, loc, scale) * 125000
+df_line = pd.DataFrame({"x": x_line, "y": y_line})
+fig9.add_scatter(x=df_line["x"], y=df_line["y"], mode="lines", name="Weibull Distribution")
 fig9.write_html("Relevant graphs/09_Histogram_airp.html")
 fig9.write_image("Relevant graphs/09_Histogram_airp.png")
 fig9.write_image("Relevant graphs/09_Histogram_airp.svg")
@@ -238,6 +244,11 @@ fig9.write_image("Relevant graphs/09_Histogram_airp.svg")
 fig10 = px.histogram(df_city, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich city')
 fig10.update_layout(bargap = 0.05)
 fig10.update_xaxes(range=[0,20])
+shape, loc, scale = stats.weibull_min.fit(df_city['WindSpeed'])     # Weibull distribution fit
+x_line = np.linspace(np.min(df_city['WindSpeed']), np.max(df_city['WindSpeed']), 100)
+y_line = stats.weibull_min.pdf(x_line, shape, loc, scale) * 40450
+df_line = pd.DataFrame({"x": x_line, "y": y_line})
+fig10.add_scatter(x=df_line["x"], y=df_line["y"], mode="lines", name="Weibull Distribution")
 fig10.write_html("Relevant graphs/10_Histogram_city.html")
 fig10.write_image("Relevant graphs/10_Histogram_city.png")
 fig10.write_image("Relevant graphs/10_Histogram_city.svg")
