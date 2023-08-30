@@ -124,17 +124,22 @@ for i,month in enumerate(months):       # Rescaling the frequency value to the n
         df_ranges_c.loc[month] = df_ranges_c.loc[month] / df_ranges_c.loc[month].sum() * 30
 
 # Wind ranges per direction (8 Himmelrichtungen)
-dir_a = np.zeros((8,len(ranges)+1))                  # Stores how often the wind of intensity j has been blowing in direction 45*i degrees
-dir_c = np.zeros((8,len(ranges)+1))
+# 8 directions = 360/8 = 45 deg precision
+total_range = 360.0
+direction_nr = len(directions) #8
+slice_size = total_range / direction_nr #45
+half_slice_size = slice_size / 2 #22.5
+dir_a = np.zeros((direction_nr,len(ranges)+1))
+dir_c = np.zeros((direction_nr,len(ranges)+1))
 for j, df in enumerate(dataframes_a):
-    dir_a[0,j] = len(df[(df.WindDirection > 360-22.5) | (df.WindDirection < 22.5)])
+    dir_a[0,j] = len(df[(df.WindDirection > total_range-half_slice_size) | (df.WindDirection < half_slice_size)])
 for j, df in enumerate(dataframes_c):
-    dir_c[0,j] = len(df[(df.WindDirection > 360-22.5) | (df.WindDirection < 22.5)])
-for i in range(1,8):
+    dir_c[0,j] = len(df[(df.WindDirection > total_range-half_slice_size) | (df.WindDirection < half_slice_size)])
+for i in range(1,direction_nr):
     for j, df in enumerate(dataframes_a):
-        dir_a[i,j] = len(df[(df.WindDirection > (45*i)-22.5) & (df.WindDirection < (45*i)+22.5)])       
+        dir_a[i,j] = len(df[(df.WindDirection > (slice_size*i)-half_slice_size) & (df.WindDirection < (slice_size*i)+half_slice_size)])       
     for j, df in enumerate(dataframes_c):
-        dir_c[i,j] = len(df[(df.WindDirection > (45*i)-22.5) & (df.WindDirection < (45*i)+22.5)]) 
+        dir_c[i,j] = len(df[(df.WindDirection > (slice_size*i)-half_slice_size) & (df.WindDirection < (slice_size*i)+half_slice_size)]) 
 
 df_dir_a = pd.DataFrame(dir_a, index=directions, columns=["<1","1-3","3-6","6-10",">10"])   # Creating a df from the arrays obtained
 df_dir_c = pd.DataFrame(dir_c, index=directions, columns=["<1","1-3","3-6","6-10",">10"])
@@ -142,19 +147,26 @@ df_dir_a = pd.melt(df_dir_a.reset_index(), id_vars=['index'], var_name='SpeedRan
 df_dir_c = pd.melt(df_dir_c.reset_index(), id_vars=['index'], var_name='SpeedRange [m/s]', value_name='Frequency')
 df_dir_a.rename(columns={'index': 'Direction'}, inplace=True)
 df_dir_c.rename(columns={'index': 'Direction'}, inplace=True)
+df_dir_a.index.name="RangeTimesDirCount"
+df_dir_c.index.name="RangeTimesDirCount"
 
 # Wind ranges per direction (10-degree precision)
-dir2_a = np.zeros((36,len(ranges)+1))
-dir2_c = np.zeros((36,len(ranges)+1))
+# 36 directions = 360/36 = 10 deg precision
+total_range = 360.0
+direction_nr = len(directions2) #36
+slice_size = total_range / direction_nr #10
+half_slice_size = slice_size / 2 #5
+dir2_a = np.zeros((direction_nr,len(ranges)+1))
+dir2_c = np.zeros((direction_nr,len(ranges)+1))
 for j,df in enumerate(dataframes_a):
-    dir2_a[0,j] = len(df[(df.WindDirection > 360-5) | (df.WindDirection < 5)])
+    dir2_a[0,j] = len(df[(df.WindDirection > total_range-half_slice_size) | (df.WindDirection < half_slice_size)])
 for j,df in enumerate(dataframes_c):
-    dir2_c[0,j] = len(df[(df.WindDirection > 360-5) | (df.WindDirection < 5)])
-for i in range(1,36):
+    dir2_c[0,j] = len(df[(df.WindDirection > total_range-half_slice_size) | (df.WindDirection < half_slice_size)])
+for i in range(1,direction_nr):
     for j, df in enumerate(dataframes_a):
-        dir2_a[i,j] = len(df[(df.WindDirection > (10*i)-5) & (df.WindDirection < (10*i)+5)])
+        dir2_a[i,j] = len(df[(df.WindDirection > (slice_size*i)-half_slice_size) & (df.WindDirection < (slice_size*i)+half_slice_size)])
     for j, df in enumerate(dataframes_c):
-        dir2_c[i,j] = len(df[(df.WindDirection > (10*i)-5) & (df.WindDirection < (10*i)+5)])   
+        dir2_c[i,j] = len(df[(df.WindDirection > (slice_size*i)-half_slice_size) & (df.WindDirection < (slice_size*i)+half_slice_size)])   
 
 df_dir2_a = pd.DataFrame(dir2_a, index=directions2, columns=["<1","1-3","3-6","6-10",">10"])
 df_dir2_c = pd.DataFrame(dir2_c, index=directions2, columns=["<1","1-3","3-6","6-10",">10"])
@@ -162,6 +174,8 @@ df_dir2_a = pd.melt(df_dir2_a.reset_index(), id_vars=['index'], var_name='SpeedR
 df_dir2_c = pd.melt(df_dir2_c.reset_index(), id_vars=['index'], var_name='SpeedRange [m/s]', value_name='Frequency')
 df_dir2_a.rename(columns={'index': 'Direction'}, inplace=True)
 df_dir2_c.rename(columns={'index': 'Direction'}, inplace=True)
+df_dir2_a.index.name="RangeTimesDirCount"
+df_dir2_c.index.name="RangeTimesDirCount"
 
 ### 2.- GUST
 
