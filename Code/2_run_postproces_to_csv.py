@@ -108,7 +108,9 @@ for i in range(12):
     for j, df in enumerate(dataframes_c):
         ranges_c[i,j] = len(df.loc[df.index.month == i+1].WindSpeed)
 df_ranges_a = pd.DataFrame(ranges_a, index=months, columns=["<1","1-3","3-6","6-10",">10"])
+df_ranges_a.index.name="Months"
 df_ranges_c = pd.DataFrame(ranges_c, index=months, columns=["<1","1-3","3-6","6-10",">10"])
+df_ranges_c.index.name="Months"
 
 for i,month in enumerate(months):       # Rescaling the frequency value to the number of days in each month
     if i==0 or i==2 or i==4 or i==6 or i==7 or i==9 or i==11:
@@ -165,9 +167,12 @@ df_dir2_c.rename(columns={'index': 'Direction'}, inplace=True)
 
 # Comparison mean vs gust speed per month
 df_comp_a = pd.DataFrame(index=months, columns=["Mean", "Gust"])        # Stores monthly average of the mean and gust winds
-df_comp_c = pd.DataFrame(index=months, columns=["Mean", "Gust"])
+df_comp_a.index.name="Months"
 df_comp_a['Mean'] = df_airp_m.groupby(df_airp_m.index.month).mean().WindSpeed.to_list()
 df_comp_a['Gust'] = df_airp_g.groupby(df_airp_g.index.month).mean().MaxSpeed.to_list()
+
+df_comp_c = pd.DataFrame(index=months, columns=["Mean", "Gust"])
+df_comp_c.index.name="Months"
 df_comp_c['Mean'] = df_city_m.groupby(df_city_m.index.month).mean().WindSpeed.to_list()
 df_comp_c['Gust'] = df_city_g.groupby(df_city_g.index.month).mean().MaxSpeed.to_list()
 
