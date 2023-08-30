@@ -13,7 +13,7 @@ import os
 
 input_folder = "postprocessed_data"
 input_ext = ".csv"
-output_folder = "plot_res_plotly"
+output_folder = "dataplots"
 
 ##################################
 # IMPORTING DATA
@@ -28,7 +28,7 @@ df_dir_a = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_co
 df_dir_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_coarse_city' + input_ext))
 
 df_dir2_a = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_fine_airp' + input_ext))
-df_dir2_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_fine_airp' + input_ext))
+df_dir2_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_fine_city' + input_ext))
 
 df_comp_a = pd.read_csv(os.path.join(input_folder,'wind_velocity_comp_gust_vs_mean_airp' + input_ext))
 df_comp_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_comp_gust_vs_mean_city' + input_ext))
