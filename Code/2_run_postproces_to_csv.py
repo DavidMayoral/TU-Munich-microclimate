@@ -189,7 +189,7 @@ df_dir_a.to_csv(os.path.join(output_folder,'wind_velocity_mean_windrose_coarse_a
 df_dir_c.to_csv(os.path.join(output_folder,'wind_velocity_mean_windrose_coarse_city' + output_ext))
 
 df_dir2_a.to_csv(os.path.join(output_folder,'wind_velocity_mean_windrose_fine_airp' + output_ext))
-df_dir2_c.to_csv(os.path.join(output_folder,'wind_velocity_mean_windrose_fine_airp' + output_ext))
+df_dir2_c.to_csv(os.path.join(output_folder,'wind_velocity_mean_windrose_fine_city' + output_ext))
 
 df_comp_a.to_csv(os.path.join(output_folder,'wind_velocity_comp_gust_vs_mean_airp' + output_ext))
 df_comp_c.to_csv(os.path.join(output_folder,'wind_velocity_comp_gust_vs_mean_city' + output_ext))
