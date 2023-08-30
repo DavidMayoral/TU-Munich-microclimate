@@ -74,16 +74,45 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 # # MONTHLY WINDS (airport)
-# fig1 = px.bar(df_ranges_a, x=df_ranges_a.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich airport', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
-# fig1.write_html(os.path.join(output_folder,"01_MonthWinds_airp.html"))
-# fig1.write_image(os.path.join(output_folder,"01_MonthWinds_airp.png"))
-# fig1.write_image(os.path.join(output_folder,"01_MonthWinds_airp.svg"))
+# fig = plt.figure(1)
+# plt.title("Monthly winds in Munich airport")
+# for idx, range_label in enumerate(["<1","1-3","3-6","6-10",">10"]):
+#     if idx == 0:
+#         plt.bar(df_ranges_a["Months"],df_ranges_a[range_label], label=range_label)
+#         prev_values = df_ranges_a[range_label]
+#     else:
+#         plt.bar(df_ranges_a["Months"],df_ranges_a[range_label], bottom=prev_values, label=range_label)
+#         prev_values = np.add(prev_values,df_ranges_a[range_label])
+# plt.grid()
+# plt.legend()
+# plt.savefig(os.path.join(output_folder,"01_MonthWinds_airp.png"))
+# plt.savefig(os.path.join(output_folder,"01_MonthWinds_airp.pdf"))
 
 # # MONTHLY WINDS (city)
-# fig2 = px.bar(df_ranges_c, x=df_ranges_c.index, y=["<1","1-3","3-6","6-10",">10"], title='Monthly winds in Munich city', labels={'index':'Month','value':'Frequency'}, color_discrete_sequence= px.colors.sequential.Plasma_r)
-# fig2.write_html(os.path.join(output_folder,"02_MonthWinds_city.html"))
-# fig2.write_image(os.path.join(output_folder,"02_MonthWinds_city.png"))
-# fig2.write_image(os.path.join(output_folder,"02_MonthWinds_city.svg"))
+# fig = plt.figure(2)
+# plt.title("Monthly winds in Munich city")
+# for idx, range_label in enumerate(["<1","1-3","3-6","6-10",">10"]):
+#     if idx == 0:
+#         plt.bar(df_ranges_c["Months"],df_ranges_a[range_label], label=range_label)
+#         prev_values = df_ranges_a[range_label]
+#     else:
+#         plt.bar(df_ranges_c["Months"],df_ranges_a[range_label], bottom=prev_values, label=range_label)
+#         prev_values = np.add(prev_values,df_ranges_a[range_label])
+# plt.grid()
+# plt.legend()
+# plt.savefig(os.path.join(output_folder,"02_MonthWinds_city.png"))
+# plt.savefig(os.path.join(output_folder,"02_MonthWinds_city.pdf"))
+
+# Windrose needs: https://python-windrose.github.io/windrose/index.html
+# pip install windrose
+
+# WIP
+# fig, ax = plt.subplots()
+# from windrose import WindroseAxes
+
+# ax = WindroseAxes.from_ax()
+# ax.bar(wd, ws, normed=True, opening=0.8, edgecolor="white")
+# ax.set_legend()
 
 # # WINDROSE (airport)
 # fig3 = px.bar_polar(df_dir_a, r="Frequency", theta="Direction", color="SpeedRange [m/s]", title='Wind direction and intensity in Munich airport', template="plotly_dark", color_discrete_sequence= px.colors.sequential.Plasma_r)
@@ -109,40 +138,27 @@ if not os.path.exists(output_folder):
 # fig6.write_image(os.path.join(output_folder,"06_WindRose_precise_city.png"))
 # fig6.write_image(os.path.join(output_folder,"06_WindRose_precise_city.svg"))
 
-# GUST vs MEAN (airport)
-
-fig = plt.figure(7)
-plt.title("Mean vs Gust intensity in Munich airport")
-plt.plot(df_comp_a["Months"],df_comp_a["Mean"], 'b-.', label="Mean")
-plt.plot(df_comp_a["Months"],df_comp_a["Gust"], 'r--', label="Gust")
-plt.grid()
-plt.legend()
-plt.savefig(os.path.join(output_folder,"07_GustvsMean_airp.png"))
-plt.savefig(os.path.join(output_folder,"07_GustvsMean_airp.pdf"))
-
-fig = plt.figure(8)
-plt.title("Mean vs Gust intensity in Munich city")
-plt.plot(df_comp_c["Months"],df_comp_a["Mean"], 'b-.', label="Mean")
-plt.plot(df_comp_c["Months"],df_comp_a["Gust"], 'r--', label="Gust")
-plt.grid()
-plt.legend()
-plt.savefig(os.path.join(output_folder,"08_GustvsMean_city.png"))
-plt.savefig(os.path.join(output_folder,"08_GustvsMean_city.pdf"))
-
-plt.show()
-
-# fig7 = px.line(df_comp_a, x=df_comp_a.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich airport')
-# fig7.update_yaxes(range=[0,6])
-# fig7.write_html(os.path.join(output_folder,"07_GustvsMean_airp.html"))
-# fig7.write_image(os.path.join(output_folder,"07_GustvsMean_airp.png"))
-# fig7.write_image(os.path.join(output_folder,"07_GustvsMean_airp.svg"))
+# # GUST vs MEAN (airport)
+# fig = plt.figure(7)
+# plt.title("Mean vs Gust intensity in Munich airport")
+# plt.plot(df_comp_a["Months"],df_comp_a["Mean"], 'b-.', label="Mean")
+# plt.plot(df_comp_a["Months"],df_comp_a["Gust"], 'r--', label="Gust")
+# plt.grid()
+# plt.legend()
+# plt.savefig(os.path.join(output_folder,"07_GustvsMean_airp.png"))
+# plt.savefig(os.path.join(output_folder,"07_GustvsMean_airp.pdf"))
 
 # # GUST vs MEAN (city)
-# fig8 = px.line(df_comp_c, x=df_comp_c.index, y=["Gust", "Mean"], title='Mean vs Gust intensity in Munich city')
-# fig8.update_yaxes(range=[0,6])
-# fig8.write_html(os.path.join(output_folder,"08_GustvsMean_city.html"))
-# fig8.write_image(os.path.join(output_folder,"08_GustvsMean_city.png"))
-# fig8.write_image(os.path.join(output_folder,"08_GustvsMean_city.svg"))
+# fig = plt.figure(8)
+# plt.title("Mean vs Gust intensity in Munich city")
+# plt.plot(df_comp_c["Months"],df_comp_a["Mean"], 'b-.', label="Mean")
+# plt.plot(df_comp_c["Months"],df_comp_a["Gust"], 'r--', label="Gust")
+# plt.grid()
+# plt.legend()
+# plt.savefig(os.path.join(output_folder,"08_GustvsMean_city.png"))
+# plt.savefig(os.path.join(output_folder,"08_GustvsMean_city.pdf"))
+
+plt.show()
 
 # # WIND SPEED DISTRIBUTION (airport)
 # fig9 = px.histogram(df_airp_m, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich airport')
