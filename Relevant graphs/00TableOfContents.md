@@ -12,6 +12,6 @@ All graphs are included in three different formats each: **static** (.png and .s
 8) Comparison of gust vs. mean wind intensity (CITY)
 9) Wind mean wind intensity distribution (with Weibull fit) (AIRPORT)
 10) Wind mean wind intensity distribution (with Weibull fit) (CITY)
-11) Gust intenstiy distribution (AIRPORT)
+11) Gust intensity distribution (AIRPORT)
 12) Gust intensity distribution (CITY)
 99. Average wind speeds per year (AIRPORT & CITY)
