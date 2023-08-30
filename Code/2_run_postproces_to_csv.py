@@ -1,10 +1,6 @@
 import pandas as pd
 import numpy as np
-from scipy import stats
 from datetime import datetime
-import matplotlib.pyplot as plt
-# import plotly.express as px
-
 import os
 
 from dwd_data_info import dwd_data_info
