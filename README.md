@@ -9,7 +9,7 @@ The Deutsche Wetterdienst (DWD) provides information on many weather parameters.
 
 Relevant for us is only the wind information (both mean and gust values).
 
-/`Code`/`00_data_extracting.ipynb`
+/`1_run_data_retrieve_from_url.py`
 
 ## 2. Resolution of the wind data provided
 All the data being currently recorded by the DWD follow the WMO guidelines, which help minimize the local effects. 
@@ -21,7 +21,7 @@ Precision of the data:
 - Wind direction: ±10ᵒ 
 
 ### Mean wind speed
-![Resolution of DWD data](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/QualityofDWDdata.png)
+![Resolution of DWD data](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/QualityOfDWDData.png)
 
 - **10-minute log**
   - Mean wind speed and direction of the last 10 minutes. 
@@ -53,7 +53,8 @@ Quality: "Automatic control and correction".
   - Automatic wind information since: 05-1992
 
 ## 4. Post-processing of raw data
-/`Code`/`processing_plotting.py`
+/`2_run_postprocess_to_csv*.py`
+/`3_plot_postprocessed_data*.py`
 
 ### How data are presented
 Mean winds:
@@ -100,7 +101,7 @@ Gust winds:
 \* Note that, for the purposes of the graphs, one gust value will be taken **every ten minutes**.
 
 ## 5. Plotting
-The following plots can be found in the `Relevant graphs` folder:
+The following plots can be found in the `/NOTES_RelevantGraphs` folder:
 - Average wind speeds per month. [01,02]
 - Wind roses (direction & wind intensity) with different precisions. [03,04,05,06]
 - Comparison of gust vs. mean wind intensity. [07,08]
@@ -111,6 +112,6 @@ The following plots can be found in the `Relevant graphs` folder:
 
 ## 6. Comparison with data from other sources
 
-In /`Relevant graphs`/`Comp Meteoblue`, a comparison can be found between the graphs generated and equivalent plots from [MeteoBlue](https://www.meteoblue.com/en/weather/historyclimate/climatemodelled/munich_germany_2867714). 
+In /`NOTES_CompMeteoblue`, a comparison can be found between the graphs generated and equivalent plots from [MeteoBlue](https://www.meteoblue.com/en/weather/historyclimate/climatemodelled/munich_germany_2867714). 
 
 This serves to ensure the validity of the DWD data.
