@@ -134,6 +134,4 @@ plt.legend()
 plt.savefig(os.path.join(output_folder,"03_MunichCity_GustMean_RP50.png"))
 plt.savefig(os.path.join(output_folder,"03_MunichCity_GustMean_RP50.pdf"))
 
-plt.show()
-
 print("\nEnding plotting data")
