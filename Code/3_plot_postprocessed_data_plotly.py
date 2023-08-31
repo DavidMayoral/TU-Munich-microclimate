@@ -100,7 +100,7 @@ fig8.write_image(os.path.join(output_folder,"08_GustvsMean_city.svg"))
 # WIND SPEED DISTRIBUTION (airport)
 data = df_airp_m['WindSpeed']
 binwidth = 1
-fig9 = px.histogram(df_airp_m, x='WindSpeed', histnorm='probability density', title='Wind intenstiy distribution in Munich airport')
+fig9 = px.histogram(df_airp_m, x='WindSpeed', histnorm='probability density', title='Wind intensity distribution in Munich airport')
 fig9.update_traces(xbins=dict( # bins used for histogram
         start=int(min(data)),
         end=int(max(data)),
@@ -118,7 +118,7 @@ fig9.write_image(os.path.join(output_folder,"09_Histogram_airp.svg"))
 # WIND SPEED DISTRIBUTION (city)
 data = df_city_m['WindSpeed']
 binwidth = 1
-fig10 = px.histogram(df_city_m, x='WindSpeed', histnorm='probability density', title='Wind intenstiy distribution in Munich city')
+fig10 = px.histogram(df_city_m, x='WindSpeed', histnorm='probability density', title='Wind intensity distribution in Munich city')
 fig10.update_traces(xbins=dict( # bins used for histogram
         start=int(min(data)),
         end=int(max(data)),
@@ -136,7 +136,7 @@ fig10.write_image(os.path.join(output_folder,"10_Histogram_city.svg"))
 # WIND GUST DISTRIBUTION (airport)
 data = df_airp_g['MaxSpeed']
 binwidth = 1
-fig11 = px.histogram(df_airp_g, x='MaxSpeed', histnorm='probability density', title='Gust intenstiy distribution in Munich airport')
+fig11 = px.histogram(df_airp_g, x='MaxSpeed', histnorm='probability density', title='Gust intensity distribution in Munich airport')
 fig11.update_traces(xbins=dict( # bins used for histogram
         start=int(min(data)),
         end=int(max(data)),
