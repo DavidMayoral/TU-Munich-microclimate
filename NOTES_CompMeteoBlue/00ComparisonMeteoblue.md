@@ -7,11 +7,11 @@ In particular, the graphs of *wind speed per month* and *wind rose* have been ar
 ## Wind speed per month
 **Meteoblue**
 
-![Meteoblue MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/NOTES_Comp_Meteoblue/Meteoblue_MonthWinds.svg)
+![Meteoblue MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/NOTES_CompMeteoblue/Meteoblue_MonthWinds.svg)
 
 **DWD**
 
-![DWD MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/3_dataplots/plotly_comp_meteoblue/02_MonthWinds_city.svg)
+![DWD MonthWinds](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/NOTES_CompMeteoblue/02_MonthWinds_city.svg)
 
 While the figures created with both sources look very similar overall, a difference can be noticed in that Meteoblue records higher values for wind speed.
 
@@ -20,11 +20,11 @@ This could be due to the fact that the measurement locations might be different,
 ## Wind rose
 **Meteoblue**
 
-![Meteoblue WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/NOTES_Comp_Meteoblue/Meteoblue_WindRose.svg)
+![Meteoblue WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/NOTES_CompMeteoblue/Meteoblue_WindRose.svg)
 
 **DWD**
 
-![DWD WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/3_dataplots/plotly_comp_meteoblue/06_WindRose_precise_city.svg)
+![DWD WindRose](https://github.com/DavidMayoral/TU-Munich-microclimate/blob/main/NOTES_CompMeteoblue/06_WindRose_precise_city.svg)
 
 Regarding the wind rose, the level of similarity of both figures is quite acceptable.
 
