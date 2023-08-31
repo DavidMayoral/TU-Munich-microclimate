@@ -98,12 +98,17 @@ fig8.write_image(os.path.join(output_folder,"08_GustvsMean_city.png"))
 fig8.write_image(os.path.join(output_folder,"08_GustvsMean_city.svg"))
 
 # WIND SPEED DISTRIBUTION (airport)
-fig9 = px.histogram(df_airp_m, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich airport')
-fig9.update_layout(bargap = 0.05)
-fig9.update_xaxes(range=[0,20])
-shape, loc, scale = stats.weibull_min.fit(df_airp_m['WindSpeed'])     # Weibull distribution fit
-x_line = np.linspace(np.min(df_airp_m['WindSpeed']), np.max(df_airp_m['WindSpeed']), 100)
-y_line = stats.weibull_min.pdf(x_line, shape, loc, scale) * 125000
+data = df_airp_m['WindSpeed']
+binwidth = 1
+fig9 = px.histogram(df_airp_m, x='WindSpeed', histnorm='probability density', title='Wind intenstiy distribution in Munich airport')
+fig9.update_traces(xbins=dict( # bins used for histogram
+        start=int(min(data)),
+        end=int(max(data)),
+        size=binwidth
+    ))
+shape, loc, scale = stats.weibull_min.fit(data)
+x_line = np.linspace(np.min(data), np.max(data), 100)
+y_line = stats.weibull_min.pdf(x_line, shape, loc, scale)
 df_line = pd.DataFrame({"x": x_line, "y": y_line})
 fig9.add_scatter(x=df_line["x"], y=df_line["y"], mode="lines", name="Weibull Distribution")
 fig9.write_html(os.path.join(output_folder,"09_Histogram_airp.html"))
@@ -111,12 +116,17 @@ fig9.write_image(os.path.join(output_folder,"09_Histogram_airp.png"))
 fig9.write_image(os.path.join(output_folder,"09_Histogram_airp.svg"))
 
 # WIND SPEED DISTRIBUTION (city)
-fig10 = px.histogram(df_city_m, x='WindSpeed', nbins=100, title='Wind intenstiy distribution in Munich city')
-fig10.update_layout(bargap = 0.05)
-fig10.update_xaxes(range=[0,20])
-shape, loc, scale = stats.weibull_min.fit(df_city_m['WindSpeed'])     # Weibull distribution fit
-x_line = np.linspace(np.min(df_city_m['WindSpeed']), np.max(df_city_m['WindSpeed']), 100)
-y_line = stats.weibull_min.pdf(x_line, shape, loc, scale) * 40450
+data = df_city_m['WindSpeed']
+binwidth = 1
+fig10 = px.histogram(df_city_m, x='WindSpeed', histnorm='probability density', title='Wind intenstiy distribution in Munich city')
+fig10.update_traces(xbins=dict( # bins used for histogram
+        start=int(min(data)),
+        end=int(max(data)),
+        size=binwidth
+    ))
+shape, loc, scale = stats.weibull_min.fit(data)
+x_line = np.linspace(np.min(data), np.max(data), 100)
+y_line = stats.weibull_min.pdf(x_line, shape, loc, scale)
 df_line = pd.DataFrame({"x": x_line, "y": y_line})
 fig10.add_scatter(x=df_line["x"], y=df_line["y"], mode="lines", name="Weibull Distribution")
 fig10.write_html(os.path.join(output_folder,"10_Histogram_city.html"))
@@ -124,17 +134,37 @@ fig10.write_image(os.path.join(output_folder,"10_Histogram_city.png"))
 fig10.write_image(os.path.join(output_folder,"10_Histogram_city.svg"))
 
 # WIND GUST DISTRIBUTION (airport)
-fig11 = px.histogram(df_airp_g, x='MaxSpeed', nbins=200, title='Gust intenstiy distribution in Munich airport')
-fig11.update_layout(bargap = 0.05)
-fig11.update_xaxes(range=[0,20])
+data = df_airp_g['MaxSpeed']
+binwidth = 1
+fig11 = px.histogram(df_airp_g, x='MaxSpeed', histnorm='probability density', title='Gust intenstiy distribution in Munich airport')
+fig11.update_traces(xbins=dict( # bins used for histogram
+        start=int(min(data)),
+        end=int(max(data)),
+        size=binwidth
+    ))
+shape, loc, scale = stats.weibull_min.fit(data)
+x_line = np.linspace(np.min(data), np.max(data), 100)
+y_line = stats.weibull_min.pdf(x_line, shape, loc, scale)
+df_line = pd.DataFrame({"x": x_line, "y": y_line})
+fig11.add_scatter(x=df_line["x"], y=df_line["y"], mode="lines", name="Weibull Distribution")
 fig11.write_html(os.path.join(output_folder,"11_Histogram_gust_airp.html"))
 fig11.write_image(os.path.join(output_folder,"11_Histogram_gust_airp.png"))
 fig11.write_image(os.path.join(output_folder,"11_Histogram_gust_airp.svg"))
 
 # WIND GUST DISTRIBUTION (city)
-fig12 = px.histogram(df_city_g, x='MaxSpeed', nbins=200, title='Gust intensity distribution in Munich city')
-fig12.update_layout(bargap = 0.05)
-fig12.update_xaxes(range=[0,20])
+data = df_city_g['MaxSpeed']
+binwidth = 1
+fig12 = px.histogram(df_city_g, x='MaxSpeed', histnorm='probability density', title='Gust intensity distribution in Munich city')
+fig12.update_traces(xbins=dict( # bins used for histogram
+        start=int(min(data)),
+        end=int(max(data)),
+        size=binwidth
+    ))
+shape, loc, scale = stats.weibull_min.fit(data)
+x_line = np.linspace(np.min(data), np.max(data), 100)
+y_line = stats.weibull_min.pdf(x_line, shape, loc, scale)
+df_line = pd.DataFrame({"x": x_line, "y": y_line})
+fig12.add_scatter(x=df_line["x"], y=df_line["y"], mode="lines", name="Weibull Distribution")
 fig12.write_html(os.path.join(output_folder,"12_Histogram_gust_city.html"))
 fig12.write_image(os.path.join(output_folder,"12_Histogram_gust_city.png"))
 fig12.write_image(os.path.join(output_folder,"12_Histogram_gust_city.svg"))
