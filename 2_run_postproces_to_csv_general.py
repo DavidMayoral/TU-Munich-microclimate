@@ -95,7 +95,7 @@ for i in range(1, len(ranges)):
 dataframes_a.append(df_airp_m[df_airp_m.WindSpeed > ranges[-1]])
 dataframes_c.append(df_city_m[df_city_m.WindSpeed > ranges[-1]])
 
-months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
 directions2 = np.arange(0, 360, 10).tolist()     # 10-degree steps
 
