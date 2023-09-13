@@ -39,7 +39,7 @@ Information:
             DX_10: wind direction of the maximum wind speed during the previous 10 minutes
 
         alternatively
-            FMX_10 "3-s gut of 10 min" = mean 3-second maxima of the wind speed during the previous 10 minutes
+            FMX_10 "3-s gust of 10 min" = mean 3-second maxima of the wind speed during the previous 10 minutes
 
 Data naming:
     Hourly:
