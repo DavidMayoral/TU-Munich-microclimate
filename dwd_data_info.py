@@ -5,7 +5,7 @@ Information:
     Hourly:
         https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/
 
-        EN: https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/BESCHREIBUNG_obsgermany_climate_hourly_wind_de.pdf
+        EN: https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/DESCRIPTION_obsgermany_climate_hourly_wind_en.pdf
         
         DE: https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/BESCHREIBUNG_obsgermany_climate_hourly_wind_de.pdf
 
