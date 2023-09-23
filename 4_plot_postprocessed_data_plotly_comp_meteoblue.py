@@ -8,9 +8,9 @@ import os
 # DEFINITIONS
 ##################################
 
-input_folder = os.path.join("2_postprocessed_data", "comp_meteoblue")
+input_folder = os.path.join("3_postprocessed_data", "comp_meteoblue")
 input_ext = ".csv"
-output_folder = os.path.join("3_dataplots","plotly_comp_meteoblue")
+output_folder = os.path.join("4_dataplots","plotly_comp_meteoblue")
 
 ##################################
 # IMPORTING DATA
@@ -57,4 +57,4 @@ fig6.write_html(os.path.join(output_folder,"06_WindRose_precise_city.html"))
 fig6.write_image(os.path.join(output_folder,"06_WindRose_precise_city.png"))
 fig6.write_image(os.path.join(output_folder,"06_WindRose_precise_city.svg"))
 
-print("\nEnding plotting data")
+print("Ending plotting data")
