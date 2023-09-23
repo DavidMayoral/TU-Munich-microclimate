@@ -8,9 +8,9 @@ import os
 # DEFINITIONS
 ##################################
 
-input_folder = os.path.join("2_postprocessed_data", "general")
+input_folder = os.path.join("3_postprocessed_data", "general")
 input_ext = ".csv"
-output_folder = os.path.join("3_dataplots","matplotlib")
+output_folder = os.path.join("4_dataplots","matplotlib")
 
 ##################################
 # IMPORTING DATA
@@ -27,14 +27,14 @@ df_dir_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_co
 df_dir2_a = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_fine_airp' + input_ext))
 df_dir2_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_mean_windrose_fine_city' + input_ext))
 
-df_comp_a = pd.read_csv(os.path.join(input_folder,'wind_velocity_comp_gust_vs_mean_airp' + input_ext))
-df_comp_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_comp_gust_vs_mean_city' + input_ext))
+df_comp_a = pd.read_csv(os.path.join(input_folder,'wind_velocity_comp_mean_vs_max_airp' + input_ext))
+df_comp_c = pd.read_csv(os.path.join(input_folder,'wind_velocity_comp_mean_vs_max_city' + input_ext))
 
 df_airp_m = pd.read_csv(os.path.join(input_folder,"wind_velocity_distrib_mean_airp" + input_ext))
 df_city_m = pd.read_csv(os.path.join(input_folder,"wind_velocity_distrib_mean_city" + input_ext))
 
-df_airp_g = pd.read_csv(os.path.join(input_folder,"wind_velocity_distrib_gust_airp" + input_ext))
-df_city_g = pd.read_csv(os.path.join(input_folder,"wind_velocity_distrib_gust_city" + input_ext))
+df_airp_g = pd.read_csv(os.path.join(input_folder,"wind_velocity_distrib_max_airp" + input_ext))
+df_city_g = pd.read_csv(os.path.join(input_folder,"wind_velocity_distrib_max_city" + input_ext))
 
 print("Ending importing data")
 
@@ -55,7 +55,7 @@ range_labels.append(str(ranges[-1]) + ">")
 
 # MONTHLY WINDS (airport)
 fig = plt.figure(1)
-plt.title("Monthly winds in Munich airport")
+plt.title("Mean monthly winds in Munich airport")
 for idx, range_label in enumerate(range_labels):
     if idx == 0:
         plt.bar(df_ranges_a["Months"],df_ranges_a[range_label], label=range_label)
@@ -70,7 +70,7 @@ plt.savefig(os.path.join(output_folder,"01_MonthWinds_airp.pdf"))
 
 # MONTHLY WINDS (city)
 fig = plt.figure(2)
-plt.title("Monthly winds in Munich city")
+plt.title("Mean monthly winds in Munich city")
 for idx, range_label in enumerate(range_labels):
     if idx == 0:
         plt.bar(df_ranges_c["Months"],df_ranges_a[range_label], label=range_label)
@@ -89,8 +89,8 @@ plt.savefig(os.path.join(output_folder,"02_MonthWinds_city.pdf"))
 
 # WIND SPEED DISTRIBUTION (airport)
 fig = plt.figure(9)
-plt.title("Wind intensity distribution in Munich airport")
-data = df_airp_m['WindSpeed']
+plt.title("Mean wind intensity distribution in Munich airport")
+data = df_airp_m['WindVelocity']
 binwidth = 1
 bins=range(int(min(data)), int(max(data)) + binwidth, binwidth)
 # using weights and fixed bins to properly normalize
@@ -106,8 +106,8 @@ plt.savefig(os.path.join(output_folder,"09_Histogram_airp.pdf"))
 
 # WIND SPEED DISTRIBUTION (city)
 fig = plt.figure(10)
-plt.title("Wind intensity distribution in Munich city")
-data = df_city_m['WindSpeed']
+plt.title("Mean wind intensity distribution in Munich city")
+data = df_city_m['WindVelocity']
 binwidth = 1
 bins=range(int(min(data)), int(max(data)) + binwidth, binwidth)
 # using weights and fixed bins to properly normalize
@@ -123,8 +123,8 @@ plt.savefig(os.path.join(output_folder,"10_Histogram_city.pdf"))
 
 # WIND SPEED DISTRIBUTION (airport)
 fig = plt.figure(11)
-plt.title("Gust intensity distribution in Munich airport")
-data = df_airp_g['MaxSpeed']
+plt.title("Max intensity distribution in Munich airport")
+data = df_airp_g['WindVelocity']
 binwidth = 1
 bins=range(int(min(data)), int(max(data)) + binwidth, binwidth)
 # using weights and fixed bins to properly normalize
@@ -135,13 +135,13 @@ y_line = stats.weibull_min.pdf(x_line, shape, loc, scale)
 plt.plot(x_line, y_line, 'r-', label='Weibull distribution')
 plt.grid()
 plt.legend()
-plt.savefig(os.path.join(output_folder,"11_Histogram_gust_airp.png"))
-plt.savefig(os.path.join(output_folder,"11_Histogram_gust_airp.pdf"))
+plt.savefig(os.path.join(output_folder,"11_Histogram_max_airp.png"))
+plt.savefig(os.path.join(output_folder,"11_Histogram_max_airp.pdf"))
 
 # WIND GUST DISTRIBUTION (city)
 fig = plt.figure(12)
-plt.title("Gust intensity distribution in Munich city")
-data = df_city_g['MaxSpeed']
+plt.title("Max intensity distribution in Munich city")
+data = df_city_g['WindVelocity']
 binwidth = 1
 bins=range(int(min(data)), int(max(data)) + binwidth, binwidth)
 # using weights and fixed bins to properly normalize
@@ -152,7 +152,7 @@ y_line = stats.weibull_min.pdf(x_line, shape, loc, scale)
 plt.plot(x_line, y_line, 'r-', label='Weibull distribution')
 plt.grid()
 plt.legend()
-plt.savefig(os.path.join(output_folder,"11_Histogram_gust_city.png"))
-plt.savefig(os.path.join(output_folder,"11_Histogram_gust_city.pdf"))
+plt.savefig(os.path.join(output_folder,"11_Histogram_max_city.png"))
+plt.savefig(os.path.join(output_folder,"11_Histogram_max_city.pdf"))
 
 print("\nEnding plotting data")
